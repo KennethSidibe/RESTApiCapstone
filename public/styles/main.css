@@ -1,0 +1,12 @@
+:root {
+    --backdrop: #183D3D;
+    --card-color: #5C8374;
+}
+
+body {
+    background-color: var(--backdrop);
+}
+
+.card {
+    background-color: var(--card-color);
+}
