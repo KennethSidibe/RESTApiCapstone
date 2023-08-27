@@ -25,16 +25,16 @@ app.post('/findAge', async (req, res) => {
     try {
         const response = await axios.get(apiURL,{params:params});
         if (response.data.age == null) {response.data.age =  randomOldAge();}
-        const data = {
-            name:response.data.name,
-            age:response.data.age
-        };
+        // const data = {
+        //     name:response.data.name,
+        //     age:response.data.age
+        // };
 
         // <------ FOR Test purposes ----->
-        // const data = {
-        //     name:"Kenneth",
-        //     age:"90"
-        // };
+        const data = {
+            name:"Kenneth",
+            age:"90"
+        };
 
         res.render( __dirname  + '/views/index.ejs', {data:data});
     } catch (error) {

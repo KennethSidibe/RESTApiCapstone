@@ -88,17 +88,13 @@ body {
     position: relative;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 400px) {
     .card {
-        max-width: 5rem;
+        max-width: 80vw;
         aspect-ratio: 1 / 1;
         height: 60vh;
-
-        
-
     }
 }
-
 .card::before {
 
 }
