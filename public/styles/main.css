@@ -73,6 +73,7 @@ body {
     min-height: 100vh;
     display: grid;
     place-content: center;
+    width: 100vw;
 }
 
 .card {
@@ -81,7 +82,21 @@ body {
     aspect-ratio: 1 / 1.5;
     border-radius: 0.5rem;
 
+    max-width: 400px; /* or whatever width you prefer */
+    margin: 0 auto; /* to center it */
+    border-radius: 0.5rem;
     position: relative;
+}
+
+@media (max-width: 500px) {
+    .card {
+        max-width: 5rem;
+        aspect-ratio: 1 / 1;
+        height: 60vh;
+
+        
+
+    }
 }
 
 .card::before {
@@ -189,4 +204,24 @@ body {
 @keyframes opacity-show {
     0% {opacity: 0;}
     100% {opacity: 1;}
+}
+
+footer {
+    position: sticky;
+    top: 100%;
+    /* min-width: 100vw; */
+    width: 100vw;
+}
+
+.footer-style {
+    min-height: 100px;
+    background-color: #2f99d2;
+}
+
+.footer-text {
+    /* font-family: 'Ubuntu', sans-serif; */
+    /* font-family: 'Handjet', cursive; */
+    font-family: 'Comfortaa', cursive;
+    font-size: 1.2rem;
+    font-weight: 500;
 }
