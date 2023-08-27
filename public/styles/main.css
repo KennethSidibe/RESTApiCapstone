@@ -1,12 +1,192 @@
 :root {
     --backdrop: #183D3D;
-    --card-color: #5C8374;
+    --card-color: #2cb494;
+    --color-5: #687a5b;
+
+    --oldPeopleColor1: #313866;
+    --oldPeopleColor2: #504099;
+    --oldPeopleColor3: #974EC3;
+    --oldPeopleColor4: #FE7BE5;
+
+    --youngPeopleColor1: #F7C8E0;
+    --youngPeopleColor2: #DFFFD8;
+    --youngPeopleColor3: #B4E4FF;
+    --youngPeopleColor4: #95BDFF;
+
+    --adultColor1: #FF6666;
+    --adultColor2: #C3EDC0;
+    --adultColor3: #E9FFC2;
+    --adultColor4: #FDFFAE;
+
+    --mainColor1: #181818;
+    --mainColor2: #3b276d;
+    --mainColor3: #68cfff;
+    --mainColor4: #F2F2F2;
+
+    --accent-reveal-color: white;
+
+}
+
+@media (max-width: 450px) {
+    .mobile-no-break-line {
+        display: none;
+    }
+}
+
+.title {
+    font-family: 'Patua One', cursive;
+    font-size: 3.5rem;
+}
+.error-message {
+    font-family: 'Patua One', cursive;
+    font-size: 2rem;
+    font-weight: 500;
+    opacity: 1;
+
+    animation: opacity 1s 1.5s forwards;
+}
+.name-text {
+    text-transform: capitalize;
+    font-family: 'Pacifico', cursive;
+    font-size: 3rem;
+    color: var(--accent-reveal-color);
+}
+
+.age-reveal {
+    font-family: 'Patua One', cursive;
+    margin-left: 2.5rem;
+    font-size: 3rem;
+    color: var(--accent-reveal-color);
+}
+
+p, label {
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.btn-animation {
+    opacity: 0;
+    animation: opacity-show 1s ease 1s forwards;
 }
 
 body {
-    background-color: var(--backdrop);
+    background-color: #fff9f3;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
 }
 
 .card {
     background-color: var(--card-color);
+    height: 60vh;
+    aspect-ratio: 1 / 1.5;
+    border-radius: 0.5rem;
+
+    position: relative;
+}
+
+.card::before {
+
+}
+
+.invisible {
+    display: none;
+}
+
+.card::after {
+    filter: blur(3rem);
+}
+
+.card-main::before,
+.card-main::after{
+    content: "";
+    position: absolute;
+    inset: -.3rem;
+    z-index: -1;
+    background: conic-gradient(
+        from var(--gradient-angle),
+        var(--mainColor1),
+        var(--mainColor4),
+        var(--mainColor3),
+        var(--mainColor2),
+        var(--mainColor1)
+    );
+    border-radius: inherit;
+    animation: rotation 40s linear infinite; 
+}
+
+.card-old::before,
+.card-old::after{
+    content: "";
+    position: absolute;
+    inset: -.3rem;
+    z-index: -1;
+    background: conic-gradient(
+        from var(--gradient-angle),
+        var(--oldPeopleColor1),
+        var(--oldPeopleColor4),
+        var(--oldPeopleColor3),
+        var(--oldPeopleColor2),
+        var(--oldPeopleColor1)
+    );
+    border-radius: inherit;
+    animation: rotation 40s linear infinite; 
+}
+
+.card-young::before,
+.card-young::after{
+    content: "";
+    position: absolute;
+    inset: -.3rem;
+    z-index: -1;
+    background: conic-gradient(
+        from var(--gradient-angle),
+        var(--youngPeopleColor1),
+        var(--youngPeopleColor4),
+        var(--youngPeopleColor3),
+        var(--youngPeopleColor2),
+        var(--youngPeopleColor1)
+    );
+    border-radius: inherit;
+    animation: rotation 40s linear infinite; 
+}
+
+
+
+.card-adult::before,
+.card-adult::after{
+    content: "";
+    position: absolute;
+    inset: -.3rem;
+    z-index: -1;
+    background: conic-gradient(
+        from var(--gradient-angle),
+        var(--adultColor1),
+        var(--adultColor4),
+        var(--adultColor3),
+        var(--adultColor2),
+        var(--adultColor1)
+    );
+    border-radius: inherit;
+    animation: rotation 40s linear infinite; 
+}
+
+@property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes rotation {
+    0% { --gradient-angle: 0deg; }
+    100% { --gradient-angle: 3600deg; }
+}
+
+@keyframes opacity {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+@keyframes opacity-show {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
 }
