@@ -1,11 +1,14 @@
 import express from "express";
 import axios from "axios";
 import bodyParser from "body-parser";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
-const port = 3000;
+const port = process.env.PORT || 3000;
 const apiURL = 'https://api.agify.io';
 
 app.listen(port, () => {
@@ -13,7 +16,7 @@ app.listen(port, () => {
 });
 
 app.get('/', (req, res) => {
-    res.render('index.ejs');
+    res.render( __dirname + '/views/index.ejs');
 });
 
 app.post('/findAge', async (req, res) => {
@@ -33,10 +36,10 @@ app.post('/findAge', async (req, res) => {
         //     age:"90"
         // };
 
-        res.render('index.ejs', {data:data});
+        res.render( __dirname  + '/views/index.ejs', {data:data});
     } catch (error) {
         console.log(error);
-        res.render('index.ejs', {errorMessage:"error"})
+        res.render(__dirname  + '/views/index.ejs', {errorMessage:"error"})
     }
 });
 
